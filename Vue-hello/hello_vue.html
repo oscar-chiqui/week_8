@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Vue</title>
+    
+    <script src="https://unpkg.com/vue@next"></script>
+
+</head>
+<body>
+<!-- Vue instance and describe the data it stores -->
+
+    <div id="app">
+        <h1>Hello Vue</h1>
+
+        <p>{{ messageWithExclamationPoints }}</p>
+
+        <button v-on:click="addExclamation">Add !</button>
+
+        <button v-on:click="clear">Clear Exclamation Points</button>
+    </div>
+
+<!--  Everything inside the div#app is the template
+• {{ message }} in double curly braces, otherwise known as
+mustache syntax, binds the message data -->
+
+    <script>
+       let app = Vue.createApp({
+        el: '#app',
+        data() {
+            return {
+                message: 'hi',
+                numberOfExclamationPoints: 0
+            }
+        },
+        methods: {
+            addExclamation() {
+                if (this.numberOfExclamationPoints < 10 ) {
+                    this.message = this.message + '!'
+                    this.numberOfExclamationPoints ++ 
+
+                } else {
+                    alert('No more exclamation points !!!!')
+                }
+            },
+            clear() {
+                this.message = 'hi'
+                this.numberOfExclamationPoints = 1
+            }
+        },
+
+        computed: {
+            messageWithExclamationPoints () {
+                //create message from the original message plus the number of exclamation points needed
+                let messageWithPoints = this.message
+
+                for (let x = 0; x < this.numberOfExclmationPoints; x++) { 
+                    messageWithPoints = messageWithPoints + '!'
+                }
+                return messageWithPoints
+            }
+        }
+       })
+
+       app.mount('#app')
+    </script>
+    
+</body>
+</html>

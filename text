@@ -1,0 +1,9 @@
+2. Property ... was accessed during render but is not defined on instance. 
+
+What does this Vue warning message mean? Can you safely ignore it? What causes it, and how do you fix it ? 
+
+Well, my first explanation would be based on the shopping cart example when I tried to run it but couldn't. 
+Because I need to use the computed method which uses properties and is known as the Vue instance.
+
+It means that the method "total" is accessed on the template, but it is not defined in the script.
+To fix that we need to define the value in another component.
